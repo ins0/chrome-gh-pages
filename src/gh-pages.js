@@ -33,7 +33,7 @@ var ghPages = {
 	},
 	getGithubPagesType: function() {
 		var hasPagesBranch = this.getRepositoryBranches().indexOf('gh-pages') !== -1;
-		var hasPagesRepoName = this.getRepositoryName().match(/\.github\.io$/);
+		var hasPagesRepoName = this.getRepositoryName().match(/\.github\.(io|com)$/);
 
 		if (hasPagesBranch) {
 			return 1;
