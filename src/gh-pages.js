@@ -46,8 +46,9 @@ var ghPages = {
 	hasGithubPages: function () {
 		return this.getGithubPagesType() !== false;
 	},
-	isRepository: function () {
-		return document.querySelector('div.main-content div.repohead') || false;
+	isValidRepository: function () {
+		// check if repository and not a fork
+		return (document.querySelector('body:not(.fork) div.main-content div.repohead') && ghPages.hasGithubPages()) || false;
 	},
 	injectButton: function() {
 		// check if cache data is present
@@ -115,7 +116,7 @@ var ghPages = {
 };
 
 chrome.extension.sendMessage({}, function() {
-	if(ghPages.hasGithubPages() && ghPages.isRepository()) {
+	if(ghPages.isValidRepository()) {
 		ghPages.injectButton();
 	}
 });
