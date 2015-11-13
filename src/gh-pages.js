@@ -14,7 +14,7 @@ var ghPages = {
 	getRepositoryName: function () {
 		return this.getRepositoryMetaName()[1];
 	},
-	getRepositoryUsername: function(){
+	getRepositoryUsername: function () {
 		return this.getRepositoryMetaName()[0];
 	},
 	getRepositoryBranches: function () {
@@ -31,7 +31,7 @@ var ghPages = {
 
 		return this.repositoryBranches;
 	},
-	getGithubPagesType: function() {
+	getGithubPagesType: function () {
 		var hasPagesBranch = this.getRepositoryBranches().indexOf('gh-pages') !== -1;
 		var hasPagesRepoName = this.getRepositoryName().match(/\.github\.(io|com)$/);
 
@@ -43,8 +43,11 @@ var ghPages = {
 
 		return false;
 	},
-	hasGithubPages: function() {
+	hasGithubPages: function () {
 		return this.getGithubPagesType() !== false;
+	},
+	isRepository: function () {
+		return document.querySelector('div.main-content div.repohead') || false;
 	},
 	injectButton: function() {
 		// check if cache data is present
@@ -112,7 +115,7 @@ var ghPages = {
 };
 
 chrome.extension.sendMessage({}, function() {
-	if(ghPages.hasGithubPages()) {
+	if(ghPages.hasGithubPages() && ghPages.isRepository()) {
 		ghPages.injectButton();
 	}
 });
