@@ -1,6 +1,6 @@
 {
   "name": "GitHub Pages",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 2,
   "description": "Add a link to the GitHub-Page of a GitHub repository",
   "homepage_url": "https://github.com/ins0/chrome-gh-pages",
