@@ -4,7 +4,7 @@ var ghPages = {
 	getRepositoryMetaName: function () {
 		if (!this.repositoryMetaName) {
 			var titleNameSplit = document.title.split(' ');
-			this.repositoryMetaName = titleNameSplit[titleNameSplit.length-1].split('/', 2);
+			this.repositoryMetaName = titleNameSplit[0].split('/', 2);
 		}
 		return this.repositoryMetaName;
 	},
